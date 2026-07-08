@@ -52,7 +52,7 @@
 
   /* -- Hero -- */
   .hero {
-    padding: 64px 0 32px;
+    padding: 56px 0 24px;
   }
 
   .hero .eyebrow { margin-bottom: 20px; }
@@ -89,7 +89,7 @@
   }
 
   /* -- Section -- */
-  section { padding: 40px 0; }
+  section { padding: 28px 0; }
 
   h2 {
     font-family: 'Roboto Slab', serif;
@@ -107,21 +107,19 @@
 
   /* -- Pillar grid -- */
   .pillar-grid {
-    margin-top: 28px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
+    margin-top: 24px;
+    column-count: 2;
+    column-gap: 40px;
   }
 
   .pillar {
-    padding: 16px 28px 16px 0;
+    padding: 14px 0;
     border-bottom: 1px solid var(--paper-line);
     display: flex;
     gap: 16px;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
   }
-
-  .pillar:nth-child(odd) { border-right: 1px solid var(--paper-line); padding-right: 32px; }
-  .pillar:nth-child(even) { padding-left: 32px; }
 
   .box {
     flex: none;
@@ -150,8 +148,8 @@
     background: var(--ink);
     color: var(--white);
     border-radius: 4px;
-    padding: 40px 40px;
-    margin: 32px 0 32px;
+    padding: 36px 40px;
+    margin: 24px 0 24px;
   }
 
   .cta .eyebrow { color: var(--amber); }
@@ -226,11 +224,9 @@
   }
 
   @media (max-width: 640px) {
-    .hero { padding: 64px 0 40px; }
-    .pillar-grid { grid-template-columns: 1fr; }
-    .pillar:nth-child(odd) { border-right: none; padding-right: 0; border-bottom: 1px solid var(--paper-line); }
-    .pillar:nth-child(even) { padding-left: 0; }
-    .cta { padding: 40px 24px; margin-left: -24px; margin-right: -24px; border-radius: 0; }
+    .hero { padding: 48px 0 24px; }
+    .pillar-grid { column-count: 1; }
+    .cta { padding: 32px 24px; margin-left: -24px; margin-right: -24px; border-radius: 0; }
   }
 
   @media (prefers-reduced-motion: reduce) {
