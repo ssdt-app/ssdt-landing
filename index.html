@@ -338,16 +338,72 @@
       form action URL (see setup instructions provided separately).
       Keep method="post", target="_blank", and the hidden honeypot field.
     -->
-    <form action="https://YOUR-MAILCHIMP-FORM-ACTION-URL" method="post" target="_blank" novalidate>
+    <form id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" novalidate>
       <label for="email">Your email</label>
       <input type="email" id="email" name="EMAIL" placeholder="you@example.com" required>
-      <button type="submit">Join the waitlist</button>
-      <!-- honeypot field to reduce bot spam - leave hidden -->
+      <button type="submit" id="mc-submit-btn">Join the waitlist</button>
+      <!-- honeypot field - Mailchimp spam protection, must keep hidden and empty -->
       <div style="position:absolute; left:-5000px;" aria-hidden="true">
-        <input type="text" name="b_HONEYPOT_ID" tabindex="-1" value="">
+        <input type="text" id="mc-honeypot" name="b_d041f4ad83aee75a37720a97a_99dd30c2a6" tabindex="-1" value="">
       </div>
-      <p class="form-note">We'll only email you when there's something worth saying.</p>
+      <p class="form-note" id="mc-form-note">We'll only email you when there's something worth saying.</p>
     </form>
+
+    <script>
+      (function () {
+        var form = document.getElementById('mc-embedded-subscribe-form');
+        var emailInput = document.getElementById('email');
+        var honeypot = document.getElementById('mc-honeypot');
+        var submitBtn = document.getElementById('mc-submit-btn');
+        var note = document.getElementById('mc-form-note');
+        var MC_ACTION = 'https://gmail.us20.list-manage.com/subscribe/post-json?u=d041f4ad83aee75a37720a97a&id=99dd30c2a6&f_id=00e5c3e1f0';
+
+        function showState(message, isError) {
+          note.textContent = message;
+          note.style.color = isError ? '#E0972E' : '#9CA5BC';
+        }
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          if (honeypot.value) { return; } // bot caught by honeypot, silently drop
+
+          var email = emailInput.value.trim();
+          if (!email) { return; }
+
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Joining…';
+
+          var callbackName = 'mcCallback' + Date.now();
+          window[callbackName] = function (data) {
+            delete window[callbackName];
+            document.body.removeChild(script);
+
+            if (data.result === 'success') {
+              form.style.display = 'none';
+              showState("You're on the list — we'll be in touch when SSDT launches.", false);
+            } else {
+              // Mailchimp returns friendly-ish messages for e.g. "already subscribed"
+              var msg = data.msg || 'Something went wrong — please try again.';
+              // strip any HTML Mailchimp sometimes includes in msg
+              msg = msg.replace(/<[^>]*>/g, '');
+              showState(msg, true);
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Join the waitlist';
+            }
+          };
+
+          var script = document.createElement('script');
+          script.src = MC_ACTION + '&EMAIL=' + encodeURIComponent(email) + '&c=' + callbackName;
+          script.onerror = function () {
+            showState('Something went wrong — please try again.', true);
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Join the waitlist';
+          };
+          document.body.appendChild(script);
+        });
+      })();
+    </script>
   </div>
 
   <footer>
