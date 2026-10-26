@@ -257,6 +257,8 @@
   .hero-form input[type="email"]::placeholder { color: #7A849A; }
   .hero-form + .form-note { color: var(--ink-soft); margin-top: 10px; }
   .hero-form + .form-note.err { color: var(--amber-dark); }
+  .try-line { font-size: 15px; color: var(--ink-soft); margin-top: 10px; max-width: 520px; }
+  .try-line a { color: var(--ink); font-weight: 600; text-decoration: underline; }
   .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 
   /* -- Offer line (hero + bottom signup) -- */
@@ -403,6 +405,7 @@
       </div>
     </form>
     <p class="form-note">Free to join, for you or for your teen. No spam. Details come at launch. <a href="/privacy/">Privacy</a></p>
+    <p class="try-line">Want a look first? <a href="https://www.ssdt.app/" target="_blank" rel="noopener">Try three modules free</a> in our early test version. No account needed.</p>
   </div>
 
   <hr class="tear">
@@ -567,7 +570,7 @@
         <summary>Is it free?</summary>
         <div class="answer">
           <!-- [CONFIRM] "paid subscription" and the three free modules: check this is still the plan at launch. -->
-          <p>Joining the waitlist is free. Three modules are free to read at ssdt.app today, including the credit score module above. The full library will be a paid subscription. Founding members on the list get a locked-in price, and full pricing is announced at launch.</p>
+          <p>Joining the waitlist is free. Three modules are free to read at <a href="https://www.ssdt.app/" target="_blank" rel="noopener">ssdt.app</a> today, including the credit score module above. The full library will be a paid subscription. Founding members on the list get a locked-in price, and full pricing is announced at launch.</p>
         </div>
       </details>
 
@@ -605,7 +608,7 @@
       <details>
         <summary>How do parents see progress?</summary>
         <div class="answer">
-          <!-- OPEN: parent progress sharing. Build is ON by default, teen can switch off. Confirm that is the intended rule. -->
+          <!-- progress sharing: ON by default, teen can switch off; asked during onboarding. Confirmed 26 Oct. -->
           <p>At launch, a parent who buys SSDT for their teen can see which modules their teen has finished. They can't see quiz answers or scores, and the teen can switch sharing off.</p>
         </div>
       </details>
