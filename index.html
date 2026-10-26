@@ -257,8 +257,57 @@
   .hero-form input[type="email"]::placeholder { color: #7A849A; }
   .hero-form + .form-note { color: var(--ink-soft); margin-top: 10px; }
   .hero-form + .form-note.err { color: var(--amber-dark); }
-  .try-line { font-size: 15px; color: var(--ink-soft); margin-top: 10px; max-width: 520px; }
-  .try-line a { color: var(--ink); font-weight: 600; text-decoration: underline; }
+  .try-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 14px;
+    margin-top: 18px;
+    max-width: 560px;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  .try-btn {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 3px;
+  }
+  .try-btn:hover { background: var(--ink-soft); }
+  .try-sub { font-size: 13px; }
+  .try-line-dark { color: #C4CADA; margin-top: 22px; }
+  .try-btn-light { background: var(--white); color: var(--ink); }
+  .try-btn-light:hover { background: #D7DCE4; }
+
+  /* -- Example module titles -- */
+  .titles-lead { margin-top: 36px; }
+  .title-list {
+    list-style: none;
+    margin-top: 16px;
+    padding: 0;
+    column-count: 2;
+    column-gap: 40px;
+  }
+  .title-list li {
+    break-inside: avoid;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--paper-line);
+  }
+  .title-list .t { display: block; font-weight: 600; font-size: 16px; line-height: 1.4; }
+  .title-list .p {
+    display: block;
+    margin-top: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber-dark);
+  }
   .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 
   /* -- Offer line (hero + bottom signup) -- */
@@ -274,19 +323,32 @@
   /* -- Module screenshot + sample quiz -- */
   .preview-grid {
     display: grid;
-    grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 424px) minmax(0, 1fr);
     gap: 32px;
     align-items: start;
     margin-top: 24px;
   }
   .module-shot { margin: 0; }
-  .module-shot img {
+  .phone {
+    background: var(--ink);
+    border-radius: 34px;
+    padding: 12px 11px 18px;
+    box-shadow: 0 16px 32px rgba(27, 37, 64, 0.30);
+  }
+  .phone::before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 6px;
+    border-radius: 3px;
+    background: #3A4560;
+    margin: 0 auto 10px;
+  }
+  .phone img {
     display: block;
     width: 100%;
     height: auto;
-    border: 1px solid var(--paper-line);
-    border-radius: 4px;
-    box-shadow: 0 6px 20px rgba(27, 37, 64, 0.12);
+    border-radius: 20px;
   }
   .module-shot figcaption { font-size: 14px; color: var(--ink-soft); margin-top: 12px; }
   .module-shot figcaption a { color: var(--ink); font-weight: 600; text-decoration: underline; }
@@ -362,7 +424,9 @@
 
   @media (max-width: 640px) {
     .preview-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-    .module-shot { max-width: 400px; }
+    .title-list { column-count: 1; }
+    .try-btn { width: 100%; text-align: center; }
+    .module-shot { max-width: 424px; }
     .quiz-card { padding: 20px 20px 22px; }
   }
 
@@ -405,7 +469,7 @@
       </div>
     </form>
     <p class="form-note">Free to join, for you or for your teen. No spam. Details come at launch. <a href="/privacy/">Privacy</a></p>
-    <p class="try-line">Want a look first? <a href="https://www.ssdt.app/" target="_blank" rel="noopener">Try three modules free</a> in our early test version. No account needed.</p>
+    <p class="try-line"><span>Want a look first?</span> <a class="try-btn" href="https://www.ssdt.app/" target="_blank" rel="noopener">Try three modules free</a> <span class="try-sub">Early test version. No account needed.</span></p>
   </div>
 
   <hr class="tear">
@@ -419,7 +483,7 @@
 
   <section>
     <h2>What's inside</h2>
-    <p class="section-lead">Nine areas of adult life, each broken into short modules with a quick quiz to check it's actually landed — finishable in minutes, on your phone.</p>
+    <p class="section-lead">Nine pillars of adult life, each broken into short modules with a quick quiz to check it's actually landed — finishable in minutes, on your phone.</p>
 
     <div class="pillar-grid">
       <div class="pillar">
@@ -496,21 +560,21 @@
 
     <div class="preview-grid">
       <figure class="module-shot">
-        <img src="/img/module-credit-score.png" width="800" height="1490" loading="lazy" alt="Screenshot of the free module Building and Understanding Your Credit Score on a phone. It opens with a quick take: your credit score can quietly block you from phone contracts, car finance and flats, most of what affects it is fixable, and one free five-minute action can genuinely move the number. Below it, the explanation begins by defining a credit score and a lender in plain English.">
+        <div class="phone"><img src="/img/module-credit-score.png" width="800" height="1490" loading="lazy" alt="Screenshot of the free module Building and Understanding Your Credit Score on a phone. It opens with a quick take: your credit score can quietly block you from phone contracts, car finance and flats, most of what affects it is fixable, and one free five-minute action can genuinely move the number. Below it, the explanation begins by defining a credit score and a lender in plain English."></div>
         <!-- link to the live free module on ssdt.app: keep (decided 26 Oct) -->
         <figcaption>The start of a real module. <a href="https://www.ssdt.app/pillars/money/building-and-understanding-your-credit-score" target="_blank" rel="noopener">Read the full module free</a> (opens in a new tab).</figcaption>
       </figure>
 
       <div class="preview-side">
         <div class="quiz-card" id="quiz-demo">
-          <div class="eyebrow">Quiz &middot; question 2 of 8</div>
+          <div class="eyebrow">Quiz &middot; question 5 of 8</div>
           <p class="quiz-intro">Every module ends with a quiz. Have a go at one of this module's questions.</p>
-          <p class="quiz-q" id="quiz-demo-q">Your credit limit is £2,000 and you currently owe £900. What is your credit utilisation, and is it within the generally recommended range?</p>
+          <p class="quiz-q" id="quiz-demo-q">Priya applies for three different credit cards in the same fortnight because she wants to compare offers. What's the most likely effect on her score?</p>
           <div role="group" aria-labelledby="quiz-demo-q">
-            <button type="button" class="q-opt" data-correct="true">45% — above the recommended 30%</button>
-            <button type="button" class="q-opt">90% — above the recommended range</button>
-            <button type="button" class="q-opt">45% — within the recommended range</button>
-            <button type="button" class="q-opt">9% — well within range</button>
+            <button type="button" class="q-opt">No effect — comparing offers is always safe</button>
+            <button type="button" class="q-opt">A short-term boost, since lenders see she's proactive</button>
+            <button type="button" class="q-opt" data-correct="true">A drop, because multiple hard searches in a short window can make her look like she urgently needs credit</button>
+            <button type="button" class="q-opt">It only affects one of the three agencies</button>
           </div>
           <p class="q-result" id="quiz-demo-result" role="status" aria-live="polite" hidden></p>
         </div>
@@ -527,6 +591,18 @@
         </div>
       </div>
     </div>
+
+    <p class="section-lead titles-lead">There are 68 modules planned across the nine pillars. Here are a few of the things you were somehow supposed to just know:</p>
+    <ul class="title-list">
+      <li><span class="t">Recognising a Bad Job and When to Leave</span><span class="p">Work</span></li>
+      <li><span class="t">Getting Out of Debt: Priority Order and Realistic Plans</span><span class="p">Money</span></li>
+      <li><span class="t">Stopped by Police: Rights and What Actually Happens</span><span class="p">The Law</span></li>
+      <li><span class="t">What You're Actually Agreeing to in a Job Offer</span><span class="p">Work</span></li>
+      <li><span class="t">Tenancy Agreements: What to Check Before You Sign</span><span class="p">Life Setup</span></li>
+      <li><span class="t">Spotting Investment Scams and Unrealistic Promises</span><span class="p">Investing</span></li>
+      <li><span class="t">Recognising When Money Stress Is Affecting Your Mental Health</span><span class="p">Health</span></li>
+      <li><span class="t">Why Big Decisions Feel Impossible, and How to Move Anyway</span><span class="p">Decision Making</span></li>
+    </ul>
   </section>
 
   <hr class="tear">
@@ -563,7 +639,7 @@
   <hr class="tear">
 
   <section id="faq">
-    <h2>Questions</h2>
+    <h2>FAQs</h2>
 
     <div class="faq">
       <details>
@@ -636,6 +712,7 @@
       </div>
     </form>
     <p class="form-note">We'll only email you when there's something worth saying. <a href="/privacy/">Privacy</a></p>
+    <p class="try-line try-line-dark"><span>Want a look first?</span> <a class="try-btn try-btn-light" href="https://www.ssdt.app/" target="_blank" rel="noopener">Try three modules free</a> <span class="try-sub">Early test version. No account needed.</span></p>
 
     <script>
       (function () {
