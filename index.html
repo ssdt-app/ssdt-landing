@@ -259,6 +259,120 @@
   .hero-form + .form-note.err { color: var(--amber-dark); }
   .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 
+  /* -- Offer line (hero + bottom signup) -- */
+  .offer {
+    margin-top: 26px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    max-width: 520px;
+  }
+  .offer + .hero-form { margin-top: 14px; }
+
+  /* -- Module extract card -- */
+  .module-card {
+    background: var(--white);
+    border: 1px solid var(--paper-line);
+    border-left: 4px solid var(--amber);
+    border-radius: 4px;
+    margin-top: 24px;
+    max-width: 760px;
+  }
+  .mc-head { padding: 22px 28px 0; }
+  .mc-head .eyebrow { margin-bottom: 8px; }
+  .mc-head h3 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 800;
+    font-size: clamp(22px, 3vw, 28px);
+    line-height: 1.15;
+  }
+  .mc-body { padding: 4px 28px 0; }
+  .mc-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber-dark);
+    margin: 20px 0 6px;
+  }
+  .mc-body p, .mc-body li { font-size: 16px; line-height: 1.6; }
+  .mc-body ul { padding-left: 20px; }
+  .mc-foot {
+    border-top: 2px dashed var(--paper-line);
+    margin-top: 20px;
+    padding: 14px 28px 18px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .mc-foot a { color: var(--ink); font-weight: 600; text-decoration: underline; }
+
+  /* -- Quiz extract card -- */
+  .quiz-card {
+    background: var(--ink);
+    color: var(--white);
+    border-radius: 4px;
+    padding: 24px 28px 26px;
+    margin-top: 20px;
+    max-width: 760px;
+  }
+  .quiz-card .eyebrow { color: var(--amber); }
+  .quiz-intro { font-size: 14px; color: #9CA5BC; margin-top: 6px; }
+  .quiz-q { font-size: 17px; font-weight: 600; line-height: 1.45; margin: 14px 0 6px; }
+  .q-opt {
+    display: block;
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    color: var(--white);
+    border: 1px solid #3A4560;
+    border-radius: 3px;
+    padding: 12px 14px;
+    margin-top: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+  .q-opt:hover:not(:disabled) { background: #26304D; color: var(--white); }
+  .q-opt:disabled { cursor: default; }
+  .q-opt.ok { border: 2px solid #4FA38F; background: rgba(79,163,143,0.16); padding: 11px 13px; }
+  .q-opt.bad { border: 2px solid #E5806F; background: rgba(229,128,111,0.12); padding: 11px 13px; }
+  .q-result { margin-top: 14px; font-size: 14px; color: #C4CADA; }
+
+  /* -- FAQ -- */
+  .faq { margin-top: 20px; max-width: 760px; }
+  .faq details { border-bottom: 1px solid var(--paper-line); }
+  .faq summary {
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+    padding: 16px 40px 16px 0;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.4;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: '+';
+    position: absolute;
+    right: 6px;
+    top: 13px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 22px;
+    color: var(--amber-dark);
+  }
+  .faq details[open] summary::after { content: '\2013'; }
+  .faq summary:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+  .faq .answer { padding: 0 0 18px; color: var(--ink-soft); font-size: 16px; line-height: 1.6; max-width: 62ch; }
+  .faq .answer a { color: var(--ink); text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .mc-head { padding: 18px 20px 0; }
+    .mc-body { padding: 4px 20px 0; }
+    .mc-foot { padding: 14px 20px 16px; }
+    .quiz-card { padding: 20px 20px 22px; }
+  }
+
   footer {
     padding: 8px 0 48px;
     font-size: 14px;
@@ -287,6 +401,8 @@
     <div class="eyebrow">Stuff School Didn't Teach</div>
     <h1>The <span class="highlight">Stuff School Didn't Teach</span> You</h1>
     <p class="sub">You can probably solve for x&nbsp;&hellip;.but do you know how to read a payslip, get on the property ladder, or start investing without guessing? <strong>SSDT is the missing manual for adult life in the UK</strong> — money, renting, tax, employment rights, business, investing and more, taught in short, straight-talking modules. No fluff, no 40-hour course, no jargon.</p>
+    <!-- [CONFIRM] founding-member price: no figure on the page yet. Add it here when decided. -->
+    <p class="offer">Be first in, with the founding-member price locked in.</p>
     <form class="mc-form hero-form" novalidate>
       <label for="email-hero" class="sr-only">Your email</label>
       <input type="email" id="email-hero" name="EMAIL" placeholder="you@example.com" required autocomplete="email">
@@ -295,7 +411,7 @@
         <input type="text" class="mc-honeypot" name="b_d041f4ad83aee75a37720a97a_99dd30c2a6" tabindex="-1" value="">
       </div>
     </form>
-    <p class="form-note">Free to join. Early access when we launch — for you, or for your teen. No spam. <a href="/privacy/">Privacy</a></p>
+    <p class="form-note">Free to join, for you or for your teen. No spam. Details come at launch. <a href="/privacy/">Privacy</a></p>
   </div>
 
   <hr class="tear">
@@ -380,6 +496,46 @@
 
   <hr class="tear">
 
+  <section id="module-preview">
+    <h2>What a module looks like</h2>
+    <p class="section-lead">Every module follows the same plain-English format: the key point up front, every term explained, a real UK example, and a quiz at the end. Below is a real extract from one of them.</p>
+
+    <article class="module-card" aria-label="Extract from the module Building and Understanding Your Credit Score">
+      <div class="mc-head">
+        <div class="eyebrow">Money &middot; Module 1</div>
+        <h3>Building and Understanding Your Credit Score</h3>
+      </div>
+      <div class="mc-body">
+        <p class="mc-label">Quick take</p>
+        <p>Your credit score can quietly block you from phone contracts, car finance and flats — most of what affects it is fixable, and one free five-minute action can genuinely move the number.</p>
+
+        <p class="mc-label">What actually moves the number</p>
+        <ul>
+          <li><strong>Credit utilisation</strong> — how much available credit you're using. £600 owed on a £1,000 limit is 60% utilisation — high risk, even if paid off monthly. Under 30% is the general rule.</li>
+        </ul>
+
+        <p class="mc-label">The fix nobody tells you about</p>
+        <p>Registering on the <strong>electoral roll</strong> — free, five minutes, at gov.uk — confirms your identity and address to lenders. It can add 50–100 points to your score within a month. Most people under 25 have never made the connection, because nobody tells them it's a credit tool, not just a voting thing.</p>
+      </div>
+      <p class="mc-foot">Extract only. The full module also covers the other factors, why it matters now, a UK example, practical steps and an 8-question quiz. <!-- [CONFIRM] link to the live free module on ssdt.app: keep or remove? --><a href="https://www.ssdt.app/pillars/money/building-and-understanding-your-credit-score">Read the full module free</a></p>
+    </article>
+
+    <div class="quiz-card" id="quiz-demo">
+      <div class="eyebrow">Quiz &middot; question 2 of 8</div>
+      <p class="quiz-intro">Every module ends with a quiz. Have a go at one of this module's questions.</p>
+      <p class="quiz-q" id="quiz-demo-q">Your credit limit is £2,000 and you currently owe £900. What is your credit utilisation, and is it within the generally recommended range?</p>
+      <div role="group" aria-labelledby="quiz-demo-q">
+        <button type="button" class="q-opt" data-correct="true">45% — above the recommended 30%</button>
+        <button type="button" class="q-opt">90% — above the recommended range</button>
+        <button type="button" class="q-opt">45% — within the recommended range</button>
+        <button type="button" class="q-opt">9% — well within range</button>
+      </div>
+      <p class="q-result" id="quiz-demo-result" role="status" aria-live="polite" hidden></p>
+    </div>
+  </section>
+
+  <hr class="tear">
+
   <section>
     <h2>For parents</h2>
     <p class="section-lead">You know the gaps — credit scores, tenancies, payslips, the property ladder. SSDT gives your teen a straight-talking way to actually learn it, without the lecture from you.</p>
@@ -409,10 +565,66 @@
     </div>
   </section>
 
+  <hr class="tear">
+
+  <section id="faq">
+    <h2>Questions</h2>
+
+    <div class="faq">
+      <details>
+        <summary>Is it free?</summary>
+        <div class="answer">
+          <!-- [CONFIRM] "paid subscription" and the three free modules: check this is still the plan at launch. -->
+          <p>Joining the waitlist is free. Three modules are free to read at ssdt.app today, including the credit score module above. The full library will be a paid subscription. Founding members on the list get a locked-in price, and full pricing is announced at launch.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Is it for under-18s?</summary>
+        <div class="answer">
+          <!-- [CONFIRM] age rules are still with the solicitor (16-17 self-sign-up; under-16 via a parent). Update after legal review. -->
+          <p>It's written for 16 to 25 year olds, and 16 and 17 year olds can sign up themselves. If you're under 16, a parent or guardian needs to set it up for you.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What will it cost?</summary>
+        <div class="answer">
+          <!-- [CONFIRM] price goes here once decided. For now: no figure, per the brief. -->
+          <p>Founding members on the list get a locked-in price. Full pricing will be announced at launch.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Who is behind it?</summary>
+        <div class="answer">
+          <!-- [CONFIRM] optional human line, e.g. "Built by a UK parent". No personal names. Decision needed. -->
+          <p>SSDT is an independent UK project. The SSDT team's aim is simple: explain the stuff school skipped in plain English, using real UK rules and real examples. Company details will be published on this site at launch.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do you share my email?</summary>
+        <div class="answer">
+          <p>No. We don't sell it or share it with advertisers. It's kept with our email provider, Mailchimp, which sends our emails for us, and every email has an unsubscribe link. There's more in our <a href="/privacy/">privacy notice</a>.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How do parents see progress?</summary>
+        <div class="answer">
+          <!-- [CONFIRM] wording depends on the final Terms (progress sharing). Currently drafted: parent sees completion only; teen can switch it off. -->
+          <p>At launch, a parent who buys SSDT for their teen can see which modules their teen has finished. They can't see quiz answers or scores, and the teen can switch sharing off.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
   <div class="cta">
     <div class="eyebrow">Coming soon</div>
-    <h2>Get early access</h2>
-    <p class="lead">Be first in when it launches — for you, or for your teen. No spam, just a heads up.</p>
+    <h2>Join the waitlist</h2>
+    <!-- [CONFIRM] founding-member price: no figure on the page yet. Add it here when decided. -->
+    <p class="lead">Be first in, with the founding-member price locked in. Details come at launch.</p>
 
     <!--
       MAILCHIMP: replace the form "action" URL below with your own embedded
@@ -494,6 +706,30 @@
   </footer>
 
 </div>
+
+<script>
+  // Sample quiz question: reveals the answer on click. Nothing is sent anywhere.
+  (function () {
+    var card = document.getElementById('quiz-demo');
+    if (!card) { return; }
+    var result = document.getElementById('quiz-demo-result');
+    var opts = card.querySelectorAll('.q-opt');
+    Array.prototype.forEach.call(opts, function (btn) {
+      btn.addEventListener('click', function () {
+        var right = btn.getAttribute('data-correct') === 'true';
+        Array.prototype.forEach.call(opts, function (o) {
+          o.disabled = true;
+          if (o.getAttribute('data-correct') === 'true') { o.classList.add('ok'); }
+        });
+        if (!right) { btn.classList.add('bad'); }
+        result.hidden = false;
+        result.textContent = right
+          ? 'Correct.'
+          : 'Not quite. The correct answer is highlighted.';
+      });
+    });
+  })();
+</script>
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e1f639839cbe419b8f21dac908163cea"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
