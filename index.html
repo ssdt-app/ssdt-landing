@@ -3,7 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stuff School Didn't Teach</title>
+<title>Stuff School Didn't Teach — the missing manual for adult life in the UK</title>
+<meta name="description" content="Money, renting, tax, work rights, business and more — short, straight-talking modules for UK 16–25s, and the parents who want to help. Join the waitlist.">
+<link rel="canonical" href="https://www.stuffschooldidntteach.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stuff School Didn't Teach">
+<meta property="og:title" content="The Stuff School Didn't Teach You">
+<meta property="og:description" content="The missing manual for adult life in the UK. Money, renting, tax, work rights, business and more — short, straight-talking modules. Join the waitlist.">
+<meta property="og:url" content="https://www.stuffschooldidntteach.com/">
+<meta property="og:image" content="https://www.stuffschooldidntteach.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Stuff School Didn't Teach You">
+<meta name="twitter:description" content="The missing manual for adult life in the UK. Join the waitlist.">
+<meta name="twitter:image" content="https://www.stuffschooldidntteach.com/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
@@ -217,15 +233,36 @@
     width: 100%;
   }
 
+  .form-note a { color: inherit; text-decoration: underline; }
+  .form-note.err { color: var(--amber); }
+
+  /* hero form (light background) */
+  .hero-form { margin-top: 28px; max-width: 520px; flex-wrap: nowrap; align-items: flex-end; }
+  .hero-form input[type="email"] {
+    color: var(--ink);
+    border-bottom-color: var(--ink-soft);
+    flex: 1 1 auto;
+    min-width: 0;
+    background: rgba(250,251,252,0.6);
+    padding: 12px 10px;
+  }
+  .hero-form input[type="email"]::placeholder { color: #7A849A; }
+  .hero-form + .form-note { color: var(--ink-soft); margin-top: 10px; }
+  .hero-form + .form-note.err { color: var(--amber-dark); }
+  .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
   footer {
     padding: 8px 0 48px;
     font-size: 14px;
     color: var(--ink-soft);
   }
+  footer a { color: var(--ink-soft); text-decoration: underline; }
 
   @media (max-width: 640px) {
     .hero { padding: 48px 0 24px; }
     .pillar-grid { column-count: 1; }
+    .hero-form { flex-wrap: wrap; }
+    .hero-form button { width: 100%; }
     .cta { padding: 32px 24px; margin-left: -24px; margin-right: -24px; border-radius: 0; }
   }
 
@@ -242,6 +279,15 @@
     <div class="eyebrow">Stuff School Didn't Teach</div>
     <h1>The <span class="highlight">Stuff School Didn't Teach</span> You</h1>
     <p class="sub">You can probably solve for x&nbsp;&hellip;.but do you know how to read a payslip, get on the property ladder, or start investing without guessing? <strong>SSDT is the missing manual for adult life in the UK</strong> — money, renting, tax, employment rights, business, investing and more, taught in short, straight-talking modules. No fluff, no 40-hour course, no jargon.</p>
+    <form class="mc-form hero-form" novalidate>
+      <label for="email-hero" class="sr-only">Your email</label>
+      <input type="email" id="email-hero" name="EMAIL" placeholder="you@example.com" required autocomplete="email">
+      <button type="submit">Join the waitlist</button>
+      <div style="position:absolute; left:-5000px;" aria-hidden="true">
+        <input type="text" class="mc-honeypot" name="b_d041f4ad83aee75a37720a97a_99dd30c2a6" tabindex="-1" value="">
+      </div>
+    </form>
+    <p class="form-note">Free to join. Early access when we launch — for you, or for your teen. No spam. <a href="/privacy/">Privacy</a></p>
   </div>
 
   <hr class="tear">
@@ -365,69 +411,70 @@
       form action URL (see setup instructions provided separately).
       Keep method="post", target="_blank", and the hidden honeypot field.
     -->
-    <form id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" novalidate>
+    <form class="mc-form" name="mc-embedded-subscribe-form" novalidate>
       <label for="email">Your email</label>
-      <input type="email" id="email" name="EMAIL" placeholder="you@example.com" required>
-      <button type="submit" id="mc-submit-btn">Join the waitlist</button>
+      <input type="email" id="email" name="EMAIL" placeholder="you@example.com" required autocomplete="email">
+      <button type="submit">Join the waitlist</button>
       <!-- honeypot field - Mailchimp spam protection, must keep hidden and empty -->
       <div style="position:absolute; left:-5000px;" aria-hidden="true">
-        <input type="text" id="mc-honeypot" name="b_d041f4ad83aee75a37720a97a_99dd30c2a6" tabindex="-1" value="">
+        <input type="text" class="mc-honeypot" name="b_d041f4ad83aee75a37720a97a_99dd30c2a6" tabindex="-1" value="">
       </div>
     </form>
-    <p class="form-note" id="mc-form-note">We'll only email you when there's something worth saying.</p>
+    <p class="form-note">We'll only email you when there's something worth saying. <a href="/privacy/">Privacy</a></p>
 
     <script>
       (function () {
-        var form = document.getElementById('mc-embedded-subscribe-form');
-        var emailInput = document.getElementById('email');
-        var honeypot = document.getElementById('mc-honeypot');
-        var submitBtn = document.getElementById('mc-submit-btn');
-        var note = document.getElementById('mc-form-note');
         var MC_ACTION = 'https://gmail.us20.list-manage.com/subscribe/post-json?u=d041f4ad83aee75a37720a97a&id=99dd30c2a6&f_id=00e5c3e1f0';
+        var BTN_TEXT = 'Join the waitlist';
 
-        function showState(message, isError) {
-          note.textContent = message;
-          note.style.color = isError ? '#E0972E' : '#9CA5BC';
-        }
+        Array.prototype.forEach.call(document.querySelectorAll('form.mc-form'), function (form) {
+          var emailInput = form.querySelector('input[type="email"]');
+          var honeypot = form.querySelector('.mc-honeypot');
+          var submitBtn = form.querySelector('button[type="submit"]');
+          var note = form.nextElementSibling;
 
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
+          function showState(message, isError) {
+            note.textContent = message;
+            note.className = 'form-note' + (isError ? ' err' : '');
+          }
 
-          if (honeypot.value) { return; } // bot caught by honeypot, silently drop
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (honeypot.value) { return; } // bot caught by honeypot, silently drop
 
-          var email = emailInput.value.trim();
-          if (!email) { return; }
+            var email = emailInput.value.trim();
+            if (!email) { return; }
 
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Joining…';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Joining…';
 
-          var callbackName = 'mcCallback' + Date.now();
-          window[callbackName] = function (data) {
-            delete window[callbackName];
-            document.body.removeChild(script);
+            var callbackName = 'mcCallback' + Date.now() + Math.floor(Math.random() * 1000);
+            var script = document.createElement('script');
+            window[callbackName] = function (data) {
+              delete window[callbackName];
+              document.body.removeChild(script);
 
-            if (data.result === 'success') {
-              form.style.display = 'none';
-              showState("You're on the list — we'll be in touch when SSDT launches.", false);
-            } else {
-              // Mailchimp returns friendly-ish messages for e.g. "already subscribed"
-              var msg = data.msg || 'Something went wrong — please try again.';
-              // strip any HTML Mailchimp sometimes includes in msg
-              msg = msg.replace(/<[^>]*>/g, '');
-              showState(msg, true);
+              if (data.result === 'success') {
+                form.style.display = 'none';
+                // Double opt-in is ON: the person must click the confirmation email.
+                showState("Almost there — we've emailed you a confirmation link. Click it to lock in your place (check spam or promotions if it's not in your inbox).", false);
+              } else {
+                var msg = data.msg || 'Something went wrong — please try again.';
+                msg = msg.replace(/<[^>]*>/g, ''); // Mailchimp sometimes includes HTML
+                showState(msg, true);
+                submitBtn.disabled = false;
+                submitBtn.textContent = BTN_TEXT;
+              }
+            };
+
+            script.src = MC_ACTION + '&EMAIL=' + encodeURIComponent(email) + '&c=' + callbackName;
+            script.onerror = function () {
+              showState('Something went wrong — please try again.', true);
               submitBtn.disabled = false;
-              submitBtn.textContent = 'Join the waitlist';
-            }
-          };
-
-          var script = document.createElement('script');
-          script.src = MC_ACTION + '&EMAIL=' + encodeURIComponent(email) + '&c=' + callbackName;
-          script.onerror = function () {
-            showState('Something went wrong — please try again.', true);
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Join the waitlist';
-          };
-          document.body.appendChild(script);
+              submitBtn.textContent = BTN_TEXT;
+            };
+            document.body.appendChild(script);
+          });
         });
       })();
     </script>
@@ -435,7 +482,7 @@
 
   <footer>
     Made for UK 16–25 year olds — and the parents who want to help.<br>
-    © 2026 Stuff School Didn't Teach
+    © 2026 Stuff School Didn't Teach · <a href="/privacy/">Privacy</a> · <a href="mailto:hello@ssdt.app">hello@ssdt.app</a>
   </footer>
 
 </div>
