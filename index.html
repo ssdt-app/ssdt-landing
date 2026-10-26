@@ -641,6 +641,14 @@
       (function () {
         var MC_ACTION = 'https://gmail.us20.list-manage.com/subscribe/post-json?u=d041f4ad83aee75a37720a97a&id=99dd30c2a6&f_id=00e5c3e1f0';
         var BTN_TEXT = 'Join the waitlist';
+        // Where the visitor came from, e.g. ?utm_source=tiktok. Cleaned to a short lowercase label;
+        // sent to Mailchimp's SOURCE field only when present. Not stored in the browser.
+        var SOURCE = (function () {
+          try {
+            var v = new URLSearchParams(window.location.search).get('utm_source');
+            return v ? v.toLowerCase().replace(/[^a-z0-9._-]/g, '').slice(0, 40) : '';
+          } catch (err) { return ''; }
+        })();
 
         Array.prototype.forEach.call(document.querySelectorAll('form.mc-form'), function (form) {
           var emailInput = form.querySelector('input[type="email"]');
@@ -682,7 +690,8 @@
               }
             };
 
-            script.src = MC_ACTION + '&EMAIL=' + encodeURIComponent(email) + '&c=' + callbackName;
+            script.src = MC_ACTION + '&EMAIL=' + encodeURIComponent(email) +
+              (SOURCE ? '&SOURCE=' + encodeURIComponent(SOURCE) : '') + '&c=' + callbackName;
             script.onerror = function () {
               showState('Something went wrong — please try again.', true);
               submitBtn.disabled = false;
