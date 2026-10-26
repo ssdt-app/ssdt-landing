@@ -299,12 +299,15 @@
   }
   .title-list .t { display: block; font-weight: 600; font-size: 16px; line-height: 1.4; }
   .title-list .p {
-    display: block;
-    margin-top: 4px;
+    display: inline-block;
+    margin-top: 6px;
+    padding: 3px 10px;
+    border: 1px solid var(--amber-dark);
+    border-radius: 999px;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--amber-dark);
   }
@@ -323,7 +326,7 @@
   /* -- Module screenshot + sample quiz -- */
   .preview-grid {
     display: grid;
-    grid-template-columns: minmax(0, 424px) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 32px;
     align-items: start;
     margin-top: 24px;
@@ -365,35 +368,36 @@
   .module-parts ul { padding-left: 20px; }
   .module-parts li { font-size: 16px; line-height: 1.6; margin-bottom: 6px; }
 
-  /* -- Quiz extract card -- */
+  /* -- Quiz extract card (sits inside a phone frame) -- */
   .quiz-card {
-    background: var(--ink);
-    color: var(--white);
-    border-radius: 4px;
-    padding: 24px 28px 26px;
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 20px;
+    padding: 22px 18px 24px;
+    min-height: 420px;
   }
-  .quiz-card .eyebrow { color: var(--amber); }
-  .quiz-intro { font-size: 14px; color: #9CA5BC; margin-top: 6px; }
+  .quiz-card .eyebrow { color: var(--amber-dark); }
+  .quiz-intro { font-size: 14px; color: var(--ink-soft); margin-top: 6px; }
   .quiz-q { font-size: 17px; font-weight: 600; line-height: 1.45; margin: 14px 0 6px; }
   .q-opt {
     display: block;
     width: 100%;
     text-align: left;
-    background: transparent;
-    color: var(--white);
-    border: 1px solid #3A4560;
-    border-radius: 3px;
+    background: var(--white);
+    color: var(--ink);
+    border: 1px solid var(--paper-line);
+    border-radius: 4px;
     padding: 12px 14px;
     margin-top: 8px;
     font-size: 15px;
     font-weight: 500;
     line-height: 1.4;
   }
-  .q-opt:hover:not(:disabled) { background: #26304D; color: var(--white); }
+  .q-opt:hover:not(:disabled) { background: #fff; border-color: var(--ink-soft); color: var(--ink); }
   .q-opt:disabled { cursor: default; }
-  .q-opt.ok { border: 2px solid #4FA38F; background: rgba(79,163,143,0.16); padding: 11px 13px; }
-  .q-opt.bad { border: 2px solid #E5806F; background: rgba(229,128,111,0.12); padding: 11px 13px; }
-  .q-result { margin-top: 14px; font-size: 14px; color: #C4CADA; }
+  .q-opt.ok { border: 2px solid var(--green); background: rgba(31,92,79,0.08); color: var(--green); padding: 11px 13px; }
+  .q-opt.bad { border: 2px solid #A63A2B; background: rgba(166,58,43,0.07); color: #A63A2B; padding: 11px 13px; }
+  .q-result { margin-top: 14px; font-size: 14px; font-weight: 600; color: var(--ink); }
 
   /* -- FAQ -- */
   .faq { margin-top: 20px; max-width: 760px; }
@@ -566,7 +570,7 @@
       </figure>
 
       <div class="preview-side">
-        <div class="quiz-card" id="quiz-demo">
+        <div class="phone"><div class="quiz-card" id="quiz-demo">
           <div class="eyebrow">Quiz &middot; question 5 of 8</div>
           <p class="quiz-intro">Every module ends with a quiz. Have a go at one of this module's questions.</p>
           <p class="quiz-q" id="quiz-demo-q">Priya applies for three different credit cards in the same fortnight because she wants to compare offers. What's the most likely effect on her score?</p>
@@ -577,7 +581,7 @@
             <button type="button" class="q-opt">It only affects one of the three agencies</button>
           </div>
           <p class="q-result" id="quiz-demo-result" role="status" aria-live="polite" hidden></p>
-        </div>
+        </div></div>
 
         <div class="module-parts">
           <p class="mc-label">Every module has</p>
@@ -592,16 +596,16 @@
       </div>
     </div>
 
-    <p class="section-lead titles-lead">There are 68 modules planned across the nine pillars. Here are a few of the things you were somehow supposed to just know:</p>
+    <p class="section-lead titles-lead">There are over 70 modules planned across the nine pillars. Here are a few of the things you were somehow supposed to just know:</p>
     <ul class="title-list">
-      <li><span class="t">Recognising a Bad Job and When to Leave</span><span class="p">Work</span></li>
-      <li><span class="t">Getting Out of Debt: Priority Order and Realistic Plans</span><span class="p">Money</span></li>
-      <li><span class="t">Stopped by Police: Rights and What Actually Happens</span><span class="p">The Law</span></li>
-      <li><span class="t">What You're Actually Agreeing to in a Job Offer</span><span class="p">Work</span></li>
-      <li><span class="t">Tenancy Agreements: What to Check Before You Sign</span><span class="p">Life Setup</span></li>
-      <li><span class="t">Spotting Investment Scams and Unrealistic Promises</span><span class="p">Investing</span></li>
-      <li><span class="t">Recognising When Money Stress Is Affecting Your Mental Health</span><span class="p">Health</span></li>
-      <li><span class="t">Why Big Decisions Feel Impossible, and How to Move Anyway</span><span class="p">Decision Making</span></li>
+      <li><span class="t">Recognising a Bad Job and When to Leave</span><span class="p">Pillar: Work</span></li>
+      <li><span class="t">Getting Out of Debt: Priority Order and Realistic Plans</span><span class="p">Pillar: Money</span></li>
+      <li><span class="t">Stopped by Police: Rights and What Actually Happens</span><span class="p">Pillar: The Law</span></li>
+      <li><span class="t">What You're Actually Agreeing to in a Job Offer</span><span class="p">Pillar: Work</span></li>
+      <li><span class="t">Tenancy Agreements: What to Check Before You Sign</span><span class="p">Pillar: Life Setup</span></li>
+      <li><span class="t">Spotting Investment Scams and Unrealistic Promises</span><span class="p">Pillar: Investing</span></li>
+      <li><span class="t">Recognising When Money Stress Is Affecting Your Mental Health</span><span class="p">Pillar: Health</span></li>
+      <li><span class="t">Why Big Decisions Feel Impossible, and How to Move Anyway</span><span class="p">Pillar: Decision Making</span></li>
     </ul>
   </section>
 
@@ -639,7 +643,7 @@
   <hr class="tear">
 
   <section id="faq">
-    <h2>FAQs</h2>
+    <h2>Frequently Asked Questions</h2>
 
     <div class="faq">
       <details>
