@@ -347,11 +347,27 @@
     background: #3A4560;
     margin: 0 auto 10px;
   }
+  .phone .screen {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    max-height: 700px;
+  }
+  .phone .screen::after,
+  .quiz-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 130px;
+    background: linear-gradient(to bottom, rgba(236, 239, 243, 0), #ECEFF3 88%);
+    pointer-events: none;
+  }
   .phone img {
     display: block;
     width: 100%;
     height: auto;
-    border-radius: 20px;
   }
   .module-shot figcaption { font-size: 14px; color: var(--ink-soft); margin-top: 12px; }
   .module-shot figcaption a { color: var(--ink); font-weight: 600; text-decoration: underline; }
@@ -373,8 +389,9 @@
     background: var(--paper);
     color: var(--ink);
     border-radius: 20px;
-    padding: 22px 18px 24px;
-    min-height: 420px;
+    padding: 22px 18px 0;
+    position: relative;
+    overflow: hidden;
   }
   .quiz-card .eyebrow { color: var(--amber-dark); }
   .quiz-intro { font-size: 14px; color: var(--ink-soft); margin-top: 6px; }
@@ -398,6 +415,9 @@
   .q-opt.ok { border: 2px solid var(--green); background: rgba(31,92,79,0.08); color: var(--green); padding: 11px 13px; }
   .q-opt.bad { border: 2px solid #A63A2B; background: rgba(166,58,43,0.07); color: #A63A2B; padding: 11px 13px; }
   .q-result { margin-top: 14px; font-size: 14px; font-weight: 600; color: var(--ink); }
+
+  .peek { margin-top: 26px; max-height: 150px; overflow: hidden; pointer-events: none; user-select: none; }
+  .peek .quiz-q { margin-top: 0; }
 
   /* -- FAQ -- */
   .faq { margin-top: 20px; max-width: 760px; }
@@ -429,6 +449,7 @@
   @media (max-width: 640px) {
     .preview-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
     .title-list { column-count: 1; }
+    .phone .screen { max-height: 640px; }
     .try-btn { width: 100%; text-align: center; }
     .module-shot { max-width: 424px; }
     .quiz-card { padding: 20px 20px 22px; }
@@ -564,7 +585,7 @@
 
     <div class="preview-grid">
       <figure class="module-shot">
-        <div class="phone"><img src="/img/module-credit-score.png" width="800" height="1490" loading="lazy" alt="Screenshot of the free module Building and Understanding Your Credit Score on a phone. It opens with a quick take: your credit score can quietly block you from phone contracts, car finance and flats, most of what affects it is fixable, and one free five-minute action can genuinely move the number. Below it, the explanation begins by defining a credit score and a lender in plain English."></div>
+        <div class="phone"><div class="screen"><img src="/img/module-credit-score.png" width="800" height="1816" loading="lazy" alt="Screenshot of the free module Building and Understanding Your Credit Score on a phone. It opens with a quick take: your credit score can quietly block you from phone contracts, car finance and flats, most of what affects it is fixable, and one free five-minute action can genuinely move the number. Below it, the explanation begins by defining a credit score and a lender in plain English."></div></div>
         <!-- link to the live free module on ssdt.app: keep (decided 26 Oct) -->
         <figcaption>The start of a real module. <a href="https://www.ssdt.app/pillars/money/building-and-understanding-your-credit-score" target="_blank" rel="noopener">Read the full module free</a> (opens in a new tab).</figcaption>
       </figure>
@@ -581,6 +602,12 @@
             <button type="button" class="q-opt">It only affects one of the three agencies</button>
           </div>
           <p class="q-result" id="quiz-demo-result" role="status" aria-live="polite" hidden></p>
+          <div class="peek" aria-hidden="true">
+            <p class="quiz-q">What specifically does registering on the electoral roll help a lender do?</p>
+            <div class="q-opt">Increase your spending limit automatically</div>
+            <div class="q-opt">Confirm your identity and address, which reduces perceived risk</div>
+            <div class="q-opt">Remove old defaults from your file</div>
+          </div>
         </div></div>
 
         <div class="module-parts">
@@ -599,11 +626,15 @@
     <p class="section-lead titles-lead">There are over 70 modules planned across the nine pillars. Here are a few of the things you were somehow supposed to just know:</p>
     <ul class="title-list">
       <li><span class="t">Recognising a Bad Job and When to Leave</span><span class="p">Pillar: Work</span></li>
-      <li><span class="t">Getting Out of Debt: Priority Order and Realistic Plans</span><span class="p">Pillar: Money</span></li>
-      <li><span class="t">Stopped by Police: Rights and What Actually Happens</span><span class="p">Pillar: The Law</span></li>
       <li><span class="t">What You're Actually Agreeing to in a Job Offer</span><span class="p">Pillar: Work</span></li>
+      <li><span class="t">Buy Now Pay Later: The Real Cost of Pay-in-3</span><span class="p">Pillar: Money</span></li>
+      <li><span class="t">Student Loans: How They Actually Work and What You'll Repay</span><span class="p">Pillar: Money</span></li>
+      <li><span class="t">Getting Out of Debt: Priority Order and Realistic Plans</span><span class="p">Pillar: Money</span></li>
       <li><span class="t">Tenancy Agreements: What to Check Before You Sign</span><span class="p">Pillar: Life Setup</span></li>
+      <li><span class="t">Stopped by Police: Rights and What Actually Happens</span><span class="p">Pillar: The Law</span></li>
+      <li><span class="t">Should You Invest, or Pay Off Debt First?</span><span class="p">Pillar: Investing</span></li>
       <li><span class="t">Spotting Investment Scams and Unrealistic Promises</span><span class="p">Pillar: Investing</span></li>
+      <li><span class="t">Using AI Tools Without Getting Played by Them</span><span class="p">Pillar: The Internet &amp; AI</span></li>
       <li><span class="t">Recognising When Money Stress Is Affecting Your Mental Health</span><span class="p">Pillar: Health</span></li>
       <li><span class="t">Why Big Decisions Feel Impossible, and How to Move Anyway</span><span class="p">Pillar: Decision Making</span></li>
     </ul>
