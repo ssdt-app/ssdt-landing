@@ -8,9 +8,15 @@
 <link rel="canonical" href="https://www.stuffschooldidntteach.com/privacy/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Fonts are served from /fonts (self-hosted, OFL licence) — no third-party font requests. -->
+<link rel="preload" href="/fonts/roboto-slab-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Roboto Slab';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/roboto-slab-600.woff2) format('woff2');}
+@font-face{font-family:'Roboto Slab';font-style:normal;font-weight:800;font-display:swap;src:url(/fonts/roboto-slab-800.woff2) format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/inter-400.woff2) format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/inter-600.woff2) format('woff2');}
+</style>
 <style>
   :root { --paper:#ECEFF3; --ink:#1B2540; --ink-soft:#4A5468; --amber-dark:#B87415; --line:#D7DCE4; }
   * { box-sizing:border-box; margin:0; padding:0; }
