@@ -269,24 +269,25 @@
   }
   .offer + .hero-form { margin-top: 14px; }
 
-  /* -- Module extract card -- */
-  .module-card {
-    background: var(--white);
-    border: 1px solid var(--paper-line);
-    border-left: 4px solid var(--amber);
-    border-radius: 4px;
+  /* -- Module screenshot + sample quiz -- */
+  .preview-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
     margin-top: 24px;
-    max-width: 760px;
   }
-  .mc-head { padding: 22px 28px 0; }
-  .mc-head .eyebrow { margin-bottom: 8px; }
-  .mc-head h3 {
-    font-family: 'Roboto Slab', serif;
-    font-weight: 800;
-    font-size: clamp(22px, 3vw, 28px);
-    line-height: 1.15;
+  .module-shot { margin: 0; }
+  .module-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--paper-line);
+    border-radius: 4px;
+    box-shadow: 0 6px 20px rgba(27, 37, 64, 0.12);
   }
-  .mc-body { padding: 4px 28px 0; }
+  .module-shot figcaption { font-size: 14px; color: var(--ink-soft); margin-top: 12px; }
+  .module-shot figcaption a { color: var(--ink); font-weight: 600; text-decoration: underline; }
   .mc-label {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
@@ -294,18 +295,11 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--amber-dark);
-    margin: 20px 0 6px;
+    margin: 0 0 8px;
   }
-  .mc-body p, .mc-body li { font-size: 16px; line-height: 1.6; }
-  .mc-body ul { padding-left: 20px; }
-  .mc-foot {
-    border-top: 2px dashed var(--paper-line);
-    margin-top: 20px;
-    padding: 14px 28px 18px;
-    font-size: 14px;
-    color: var(--ink-soft);
-  }
-  .mc-foot a { color: var(--ink); font-weight: 600; text-decoration: underline; }
+  .module-parts { margin-top: 24px; }
+  .module-parts ul { padding-left: 20px; }
+  .module-parts li { font-size: 16px; line-height: 1.6; margin-bottom: 6px; }
 
   /* -- Quiz extract card -- */
   .quiz-card {
@@ -313,8 +307,6 @@
     color: var(--white);
     border-radius: 4px;
     padding: 24px 28px 26px;
-    margin-top: 20px;
-    max-width: 760px;
   }
   .quiz-card .eyebrow { color: var(--amber); }
   .quiz-intro { font-size: 14px; color: #9CA5BC; margin-top: 6px; }
@@ -367,9 +359,8 @@
   .faq .answer a { color: var(--ink); text-decoration: underline; }
 
   @media (max-width: 640px) {
-    .mc-head { padding: 18px 20px 0; }
-    .mc-body { padding: 4px 20px 0; }
-    .mc-foot { padding: 14px 20px 16px; }
+    .preview-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .module-shot { max-width: 400px; }
     .quiz-card { padding: 20px 20px 22px; }
   }
 
@@ -498,39 +489,40 @@
 
   <section id="module-preview">
     <h2>What a module looks like</h2>
-    <p class="section-lead">Every module follows the same plain-English format: the key point up front, every term explained, a real UK example, and a quiz at the end. Below is a real extract from one of them.</p>
+    <p class="section-lead">Every module follows the same plain-English format: the key point up front, every term explained, a real UK example, and a quiz at the end. Here's a real one, as it looks on your phone.</p>
 
-    <article class="module-card" aria-label="Extract from the module Building and Understanding Your Credit Score">
-      <div class="mc-head">
-        <div class="eyebrow">Money &middot; Module 1</div>
-        <h3>Building and Understanding Your Credit Score</h3>
+    <div class="preview-grid">
+      <figure class="module-shot">
+        <img src="/img/module-credit-score.png" width="800" height="1490" loading="lazy" alt="Screenshot of the free module Building and Understanding Your Credit Score on a phone. It opens with a quick take: your credit score can quietly block you from phone contracts, car finance and flats, most of what affects it is fixable, and one free five-minute action can genuinely move the number. Below it, the explanation begins by defining a credit score and a lender in plain English.">
+        <!-- [CONFIRM] link to the live free module on ssdt.app: keep (decided) -->
+        <figcaption>The start of a real module. <a href="https://www.ssdt.app/pillars/money/building-and-understanding-your-credit-score" target="_blank" rel="noopener">Read the full module free</a> (opens in a new tab).</figcaption>
+      </figure>
+
+      <div class="preview-side">
+        <div class="quiz-card" id="quiz-demo">
+          <div class="eyebrow">Quiz &middot; question 2 of 8</div>
+          <p class="quiz-intro">Every module ends with a quiz. Have a go at one of this module's questions.</p>
+          <p class="quiz-q" id="quiz-demo-q">Your credit limit is £2,000 and you currently owe £900. What is your credit utilisation, and is it within the generally recommended range?</p>
+          <div role="group" aria-labelledby="quiz-demo-q">
+            <button type="button" class="q-opt" data-correct="true">45% — above the recommended 30%</button>
+            <button type="button" class="q-opt">90% — above the recommended range</button>
+            <button type="button" class="q-opt">45% — within the recommended range</button>
+            <button type="button" class="q-opt">9% — well within range</button>
+          </div>
+          <p class="q-result" id="quiz-demo-result" role="status" aria-live="polite" hidden></p>
+        </div>
+
+        <div class="module-parts">
+          <p class="mc-label">Every module has</p>
+          <ul>
+            <li>A quick take, so you know the point in one line</li>
+            <li>An explanation where every term is defined, with a worked example</li>
+            <li>Why it matters now, and a real UK example</li>
+            <li>Practical steps you can do today</li>
+            <li>A quiz to check it has landed</li>
+          </ul>
+        </div>
       </div>
-      <div class="mc-body">
-        <p class="mc-label">Quick take</p>
-        <p>Your credit score can quietly block you from phone contracts, car finance and flats — most of what affects it is fixable, and one free five-minute action can genuinely move the number.</p>
-
-        <p class="mc-label">What actually moves the number</p>
-        <ul>
-          <li><strong>Credit utilisation</strong> — how much available credit you're using. £600 owed on a £1,000 limit is 60% utilisation — high risk, even if paid off monthly. Under 30% is the general rule.</li>
-        </ul>
-
-        <p class="mc-label">The fix nobody tells you about</p>
-        <p>Registering on the <strong>electoral roll</strong> — free, five minutes, at gov.uk — confirms your identity and address to lenders. It can add 50–100 points to your score within a month. Most people under 25 have never made the connection, because nobody tells them it's a credit tool, not just a voting thing.</p>
-      </div>
-      <p class="mc-foot">Extract only. The full module also covers the other factors, why it matters now, a UK example, practical steps and an 8-question quiz. <!-- [CONFIRM] link to the live free module on ssdt.app: keep or remove? --><a href="https://www.ssdt.app/pillars/money/building-and-understanding-your-credit-score">Read the full module free</a></p>
-    </article>
-
-    <div class="quiz-card" id="quiz-demo">
-      <div class="eyebrow">Quiz &middot; question 2 of 8</div>
-      <p class="quiz-intro">Every module ends with a quiz. Have a go at one of this module's questions.</p>
-      <p class="quiz-q" id="quiz-demo-q">Your credit limit is £2,000 and you currently owe £900. What is your credit utilisation, and is it within the generally recommended range?</p>
-      <div role="group" aria-labelledby="quiz-demo-q">
-        <button type="button" class="q-opt" data-correct="true">45% — above the recommended 30%</button>
-        <button type="button" class="q-opt">90% — above the recommended range</button>
-        <button type="button" class="q-opt">45% — within the recommended range</button>
-        <button type="button" class="q-opt">9% — well within range</button>
-      </div>
-      <p class="q-result" id="quiz-demo-result" role="status" aria-live="polite" hidden></p>
     </div>
   </section>
 
@@ -598,8 +590,8 @@
       <details>
         <summary>Who is behind it?</summary>
         <div class="answer">
-          <!-- [CONFIRM] optional human line, e.g. "Built by a UK parent". No personal names. Decision needed. -->
-          <p>SSDT is an independent UK project. The SSDT team's aim is simple: explain the stuff school skipped in plain English, using real UK rules and real examples. Company details will be published on this site at launch.</p>
+          <!-- [CONFIRM] "built by a UK parent": added as decided; confirm you are happy with it being public. -->
+          <p>SSDT is an independent UK project, built by a UK parent. The SSDT team's aim is simple: explain the stuff school skipped in plain English, using real UK rules and real examples. Company details will be published on this site at launch.</p>
         </div>
       </details>
 
