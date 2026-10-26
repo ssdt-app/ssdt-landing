@@ -351,7 +351,7 @@
     position: relative;
     border-radius: 20px;
     overflow: hidden;
-    max-height: 700px;
+    height: 720px;
   }
   .phone .screen::after,
   .quiz-card::after {
@@ -392,6 +392,7 @@
     padding: 22px 18px 0;
     position: relative;
     overflow: hidden;
+    height: 720px;
   }
   .quiz-card .eyebrow { color: var(--amber-dark); }
   .quiz-intro { font-size: 14px; color: var(--ink-soft); margin-top: 6px; }
@@ -449,7 +450,7 @@
   @media (max-width: 640px) {
     .preview-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
     .title-list { column-count: 1; }
-    .phone .screen { max-height: 640px; }
+    .phone .screen, .phone .quiz-card { height: 700px; }
     .try-btn { width: 100%; text-align: center; }
     .module-shot { max-width: 424px; }
     .quiz-card { padding: 20px 20px 22px; }
